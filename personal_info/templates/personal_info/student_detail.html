@@ -1,0 +1,50 @@
+{% extends 'personal_info/base.html' %}
+
+{% block title %}{{ student.first_name }}'s Profile | Student Profiles{% endblock %}
+
+{% block content %}
+<article class="panel">
+    <h2>{{ student.first_name }} {{ student.last_name }}</h2>
+
+    <h3>Academic &amp; Enrollment</h3>
+    <dl class="profile-grid">
+        <div><dt>Student ID</dt><dd>{{ student.student_id }}</dd></div>
+        <div><dt>Course</dt><dd>{{ student.course }}</dd></div>
+        <div><dt>Year Level</dt><dd>{{ student.year_level }}</dd></div>
+        <div><dt>Section</dt><dd>{{ student.section|default:"Not provided" }}</dd></div>
+        <div><dt>Enrollment Status</dt><dd>{{ student.get_enrollment_status_display }}</dd></div>
+        <div><dt>Academic Year</dt><dd>{{ student.academic_year|default:"Not provided" }}</dd></div>
+    </dl>
+
+    <h3>Personal Information</h3>
+    <dl class="profile-grid">
+        <div><dt>Date of Birth</dt><dd>{{ student.date_of_birth|date:"F j, Y"|default:"Not provided" }}</dd></div>
+        <div><dt>Email</dt><dd>{{ student.email|default:"Not provided" }}</dd></div>
+        <div><dt>Phone</dt><dd>{{ student.phone_number|default:"Not provided" }}</dd></div>
+        <div><dt>Home Address</dt><dd>{{ student.home_address|default:"Not provided" }}</dd></div>
+    </dl>
+
+    <h3>Family &amp; Guardian</h3>
+    <dl class="profile-grid">
+        <div><dt>Parent/Guardian</dt><dd>{{ student.guardian_name|default:"Not provided" }}</dd></div>
+        <div><dt>Relationship</dt><dd>{{ student.guardian_relationship|default:"Not provided" }}</dd></div>
+        <div><dt>Emergency Contact</dt><dd>{{ student.emergency_contact|default:"Not provided" }}</dd></div>
+    </dl>
+
+    <h3>Medical &amp; Health</h3>
+    <dl class="profile-grid">
+        <div><dt>Blood Type</dt><dd>{{ student.blood_type|default:"Not provided" }}</dd></div>
+        <div><dt>Allergies</dt><dd>{{ student.allergies|default:"Not provided" }}</dd></div>
+        <div><dt>Medical Conditions</dt><dd>{{ student.medical_conditions|default:"Not provided" }}</dd></div>
+        <div><dt>Physician Contact</dt><dd>{{ student.physician_contact|default:"Not provided" }}</dd></div>
+    </dl>
+
+    <h3>Background Information</h3>
+    <p>{{ student.background_info|default:"No background information provided."|linebreaksbr }}</p>
+
+    <h3>Extracurricular Activities</h3>
+    <p>{{ student.extracurriculars|default:"Not provided."|linebreaksbr }}</p>
+
+    <a class="back-link" href="{% url 'personal_info:student_list' %}">&larr; Back to Student List</a>
+</article>
+{% endblock %}

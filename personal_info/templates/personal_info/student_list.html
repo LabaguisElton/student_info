@@ -1,0 +1,23 @@
+{% extends 'personal_info/base.html' %}
+
+{% block title %}All Students | Student Profiles{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <h2>Student Directory</h2>
+    {% if students %}
+        <ul class="student-list">
+            {% for student in students %}
+                <li>
+                    <a href="{% url 'personal_info:student_detail' student.pk %}">
+                        {{ student.last_name|upper }}, {{ student.first_name|title }}
+                        <span>ID: {{ student.student_id }} · {{ student.course }} · Year {{ student.year_level }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No students found yet. Add student records in the <a href="{% url 'admin:personal_info_student_changelist' %}">admin site</a>.</p>
+    {% endif %}
+</section>
+{% endblock %}

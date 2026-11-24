@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Student Profiles{% endblock %}</title>
+    <style>
+        :root { color-scheme: light; font-family: Arial, sans-serif; color: #172033; background: #f3f6fb; }
+        body { margin: 0; }
+        header { padding: 1.25rem max(1.25rem, calc((100% - 960px) / 2)); background: #173b68; color: #fff; }
+        header h1 { margin: 0; font-size: 1.35rem; }
+        main { box-sizing: border-box; max-width: 960px; min-height: 75vh; margin: 2rem auto; padding: 0 1.25rem; }
+        .panel { padding: 1.5rem; border: 1px solid #dfe5ef; border-radius: 12px; background: #fff; box-shadow: 0 4px 16px #1720330b; }
+        h2 { margin-top: 0; }
+        h3 { margin-top: 1.75rem; color: #173b68; }
+        a { color: #1456a0; }
+        .student-list { display: grid; gap: .75rem; padding: 0; list-style: none; }
+        .student-list a { display: block; padding: 1rem; border: 1px solid #dfe5ef; border-radius: 8px; text-decoration: none; }
+        .student-list a:hover { background: #f3f7fc; }
+        .student-list span { display: block; margin-top: .25rem; color: #596579; font-size: .9rem; }
+        .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+        .profile-grid dt { color: #596579; font-size: .85rem; }
+        .profile-grid dd { margin: .25rem 0 0; white-space: pre-line; }
+        .back-link { display: inline-block; margin-top: 1.5rem; }
+        footer { padding: 1.25rem; color: #596579; text-align: center; }
+    </style>
+</head>
+<body>
+    <header><h1>Student Enrollment System</h1></header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer><p>Student Profile Directory</p></footer>
+</body>
+</html>
